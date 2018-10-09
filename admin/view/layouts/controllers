@@ -1,0 +1,56 @@
+controllers
+	-> add-image
+	-> edit-image
+	-> add-page
+	-> edit-page
+	-> mailer
+	-> database
+views
+ -> static
+ 	-> js
+ 	-> css
+ 	-> images
+index.php
+.htaccess
+
+
+	<form method="post">
+
+				
+				<?php 
+
+						$rows = $image->show_images();
+						 	
+						 	foreach ($rows as $key => $value) {
+						 		# code...
+						 	
+						 		
+
+						
+				?>
+
+				<a href="http://localhost/newassign/admin/image-manager.php/?id=<?php echo $value['id'] ?>"><?php echo $value['page_id'] ?></a>
+
+
+					
+				<?php 
+
+				
+				if (empty($_GET['id'])) {
+					echo "";
+						
+						
+				
+				?>
+				<?php } else {?>
+					
+					<img src="http://localhost/newassign/upload/<?php echo $value['image'] ?>">
+					
+				<?php } ?>
+				<?php
+
+				} ?>
+			
+					
+
+				</form>
