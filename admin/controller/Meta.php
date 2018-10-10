@@ -1,7 +1,7 @@
 <?php 
-include_once('Database.php');
-include_once('Crud.php');
-include_once('Image.php');
+include_once(__DIR__.'/Database.php');
+include_once(__DIR__.'/Crud.php');
+include_once(__DIR__.'/Image.php');
 
 class Meta extends Database {
 

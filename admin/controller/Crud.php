@@ -1,128 +1,6 @@
 <?php 
 
-include_once('Database.php');
-include_once('Image.php');
-include_once('Meta.php');
-
-
- class Crud extends Database {
-
- 	public $table1 = "page";
-
-
- 	public function verify_add($data) {
-		
-		$condition = '';
-		$nextcondition = '';
-
-		foreach ($data as $key => $value) {
-			$condition .= " " . $key . ',' ;
-			$nextcondition .= " " . "'$value'" . ',';
-			
-			
-		}
-		
-		$condition =rtrim($condition , ',');
-		$nextcondition = rtrim($nextcondition , ',');
-		$sql = "INSERT INTO " .$this->table1 ."(" . $condition .")" ." ". "VALUES(" .$nextcondition .")";
-		
-
-
-		$query = mysqli_query($this->connection,$sql);
-		
-
-		// if($query) {
-		// 	return true;
-		// } else {
-		// 	$this->error = "Invalid Data";
-		// }
-
-	}
-
-	public function show_data() {
-		$sql = "select * from ". $this->table1 ;
-		$query = mysqli_query($this->connection,$sql);
-		$rows = array();
-		while ($row = mysqli_fetch_assoc($query)) {
-			$rows[] = $row;
-		}
-		return $rows;
-
-
-	}
-	//for edit
-	public function select_data($id) {
-		foreach ($id as $key => $value) {
-			$condition = $key . "=" . "'$value'";
-				
-		}
-		$sql =	"select * from " .$this->table1 . " where " .$condition;
-
-		$query = mysqli_query($this->connection,$sql);
-		
-		$rows = mysqli_fetch_array($query);
-
-		return $rows;
-		
-
-	}
-	public function delete_data($did) {
-		
-		foreach ($did as $key => $value) {
-			$condition =  $key . "=" . "'$value'"; 
-		}
-
-		// $condition1 = "SELECT image  from " . $this->table1 . " where id=" . "'$value'";
-		// $query1 = mysqli_query($this->connection,$condition1);
-		// $query2 = mysqli_fetch_assoc($query1);
-		// return $query2;
-		$sql = "Delete from ".$this->table1. " where " . $condition;
-		
-
-		$query = mysqli_query($this->connection,$sql);
-		
-
-
-		
-		
-
-	}
-
-	public function update_data($data,$id) {
-			//UPDATE INTO TABLENAME SET NAME = 'VALUE' WHERE ID=1;
-		foreach ($data as $key => $value) {
-			$condition = $key . '=' . "'$value'";
-		}
-		foreach ($id as $eid) {
-			$uip = $eid;
-			# code...
-		}
-		$sql = "UPDATE " . $this->table1 . " SET " . $condition . " WHERE id=" . $eid;
-		$query = mysqli_query($this->connection , $sql);
-		return $query;
-		
-	}
-
-	public function select_id_for_meta($data) {
-		//select id from $this->table where $condition
-		foreach ($data as $key => $value) {
-			$condition = $key . '=' . "'$value'";
-		}
-		$sql = "SELECT id from " .$this->table1 . ' WHERE ' . $condition;
-
-		
-		$query = mysqli_query($this->connection,$sql);
-		$row =array();
-		
-
-		while ($rows = mysqli_fetch_assoc($query)) {
-		 	$row[] = $rows;
-		 } 
-		 return $row;
-		 
-		
-	 }
- }
+require_once(__dir__.'/../data/Crud.php');
 
 
  $crud = new Crud();
@@ -167,7 +45,7 @@ include_once('Meta.php');
 				
 				);
 		
-		if($crud->verify_add($data,$table)) {
+		if($crud->verify_add($data)) {
 
 			//for metatable 'SELECT ID FOR  METATABLE'
 
@@ -196,20 +74,19 @@ include_once('Meta.php');
 if (isset($_GET['delete'])) {
 	$id = $_GET['id'];
 	$did = array( 'id' => $id);
-	$crud->delete_data($did);
-
-
-	// foreach ($query2 as $key => $value) {
-	// 	# code...
+	$result = $crud->delete_data($did);
+	foreach ($result as $key => $value) {
+		
+	}
 		
 	
 
-	// if($crud->delete_data($did)) {
-	// 	unlink("../upload/" . $value);
+	if($crud->delete_data($did)) {
+		unlink("../static/upload/" . $value['image']);
 		
-	// }
+	}
 		
-	// }
+	
 }
 if (isset($_POST['update'])) {
 	$id = $_POST['id'];

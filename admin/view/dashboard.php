@@ -1,22 +1,28 @@
 <?php 
 
-include_once('../controller/Session.php');
-include_once('layouts/header.php');
-// include_once('../data/Session.php');
 
-// echo "Welcome " . $_SESSION['email']."<br>";
+include_once(__DIR__.'/../controller/Session.php');
+include_once(__DIR__.'/layouts/header.php');
+include_once(__DIR__.'/../data/Settings.php')
 
-// s
  ?>
 
  <body>
  	<div class="container">
  		<div class="row">
  			<div class="col-md-8">
- 				<a href="http://localhost/newassign/admin/view/page-manager.php" class="btn btn-primary">Page Manager</a>
- 				<a href="http://localhost/newassign/admin/view/admin-manager.php" class="btn btn-primary">Admin Manager</a>
- 				<a href="http://localhost/newassign/admin/view/image-manager.php" class="btn btn-primary">Image Manager</a>
- 				<a href="http://localhost/newassign/admin/view/logout.php" class="btn btn-primary">Logout</a>
+ 				<?php
+ 					$row = $settings->setting();
+ 					foreach ($row as $key => $value) {
+ 						
+ 					}
+ 					
+
+ 				 ?>
+ 				<a href="<?php echo $value['server_root']; ?>admin/view/page-manager.php" class="btn btn-primary">Page Manager</a>
+ 				<a href="<?php echo $value['server_root']; ?>admin/view/admin-manager.php" class="btn btn-primary">Admin Manager</a>
+ 				<a href="<?php echo $value['server_root']; ?>admin/view/image-manager.php" class="btn btn-primary">Image Manager</a>
+ 				<a href="<?php echo $value['server_root']; ?>admin/view/logout.php" class="btn btn-primary">Logout</a>
  			</div>
  		</div>
  	</div>

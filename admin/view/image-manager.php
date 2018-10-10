@@ -1,9 +1,10 @@
 <?php 
 
-include_once('layouts/header.php');
-include('Dashboard.php');
-include_once('../controller/Image.php');
-include_once('../controller/Crud.php');
+include_once(__DIR__.'/layouts/header.php');
+include(__DIR__.'/Dashboard.php');
+include_once(__DIR__.'/../controller/Image.php');
+include_once(__DIR__.'/../controller/Crud.php');
+include_once(__DIR__.'/../data/Settings.php')
 
 
  ?>
@@ -73,9 +74,17 @@ include_once('../controller/Crud.php');
 						
 						<tr>
 							<td><?php echo $value['id']; ?></td>
-							<td><img src="http://localhost/newassign/admin/static/upload/<?php echo $value['image'] ?>"></td>
+							<?php 
+								$urlresult = $settings->Setting();
+								foreach ($urlresult as $key => $url) {
+									
+								}
+								
+
+							?>
+							<td><img src="<?php echo $url['server_root']; ?>admin/static/upload/<?php echo $value['image'] ?>"></td>
 							
-							<td><a href="http://localhost/newassign/admin/view/image-manager.php/?delete=1&id=<?php echo $value['id']?>" class="btn btn-danger">Delete</a></td>
+							<td><a href="<?php echo $url['server_root']; ?>admin/view/image-manager.php/?delete=1&id=<?php echo $value['id']?>" class="btn btn-danger">Delete</a></td>
 						
 						
 						</tr>

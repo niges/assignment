@@ -3,7 +3,7 @@ include_once('Validation.php');
 
 
 if(!$_SESSION['email']) {
-	header("location:../login.php");
+	header("location:admin/view/login.php");
 	
 }
 

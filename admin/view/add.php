@@ -1,8 +1,12 @@
 <?php
 // include('../action.php');
-include('layouts/header.php');
-include('Dashboard.php');
-include('../controller/Crud.php');
+include(__DIR__.'/layouts/header.php');
+include(__DIR__.'/Dashboard.php');
+
+// require_once('../data/Settings.php');
+// require_once($path.'/newassign/admin/Controller/Crud.php');
+
+include(__DIR__.'/../controller/Crud.php');
 
 ?>
 

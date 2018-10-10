@@ -1,8 +1,8 @@
 
 <?php
-include('page-manager.php');
-include_once('../controller/Crud.php');
-include_once('../controller/Image.php');
+include(__DIR__.'/page-manager.php');
+include_once(__DIR__.'/../controller/Crud.php');
+include_once(__DIR__.'/../controller/Image.php');
 
 // if(!isset($_SESSION['email'])) {
 //  	header("Location:../login.php");
