@@ -1,9 +1,15 @@
 <?php 
-include_once(__DIR__.'/../controller/Database.php');
+include_once(__DIR__.'/Database.php');
+
+
 
 
 
 class Validation extends Database {
+	
+	public static $instance;
+
+	public $table="admin";
 
 		public static function get_instance() {
 			if(!self::$instance) {

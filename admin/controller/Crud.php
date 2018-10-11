@@ -1,6 +1,8 @@
 <?php 
 
 require_once(__dir__.'/../data/Crud.php');
+require_once(__dir__.'/../data/Settings.php');
+
 
 
  $crud = new Crud();
@@ -39,6 +41,7 @@ require_once(__dir__.'/../data/Crud.php');
 		}
 
 
+
 		$data =array(
 				'title' => $_POST['title'],
 				'body' => $_POST['body'],
@@ -50,7 +53,6 @@ require_once(__dir__.'/../data/Crud.php');
 			//for metatable 'SELECT ID FOR  METATABLE'
 
 			$idforpost = $crud->select_id_for_meta($data);
-		
 
 			foreach ($idforpost as $key => $value) {
 			
@@ -61,33 +63,37 @@ require_once(__dir__.'/../data/Crud.php');
 						'page_id' 	=> $value['id'],
 						'images_id' => $result
 						);
-			$meta->insert_metadata($metadata);
+
+			if($meta->insert_metadata($metadata)) {
+
+				
+				$urlresult = $settings->Setting();
+				foreach ($urlresult as $key => $url) {
+
+					header('location:http://localhost/newassign/admin/view/page-manager.php');
+
+				}
+
+			}
+
+
 
 			
-			header("location:http://localhost/newassign/admin/view/page-manager.php");
 			
 		}
 	}
 	
 	
 }
+
 if (isset($_GET['delete'])) {
 	$id = $_GET['id'];
 	$did = array( 'id' => $id);
 	$result = $crud->delete_data($did);
-	foreach ($result as $key => $value) {
-		
-	}
-		
 	
-
-	if($crud->delete_data($did)) {
-		unlink("../static/upload/" . $value['image']);
-		
-	}
-		
 	
 }
+
 if (isset($_POST['update'])) {
 	$id = $_POST['id'];
 	$where = array('id' => $id);

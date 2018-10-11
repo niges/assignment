@@ -1,8 +1,10 @@
  <?php 
 
-include_once(__DIR__.'/../controller/Database.php');
+include_once(__DIR__.'/Database.php');
 
 class password extends Database {
+
+	public $table = 'admin';
 
 	public function update_password($data) {
 		$condition = "";
@@ -16,7 +18,7 @@ class password extends Database {
 		return $query;
 	}
 
-	public function checkOldPassword($opassword) {
+	public function check_old_password($opassword) {
 		$sql = "SELECT password FROM " .$this->table . " WHERE password=" . "'$opassword'";
 
 		$query = mysqli_query($this->connection,$sql);

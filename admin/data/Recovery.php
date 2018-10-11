@@ -1,6 +1,6 @@
 <?php 
 
-include_once(__DIR__.'/../controller/Database.php');
+include_once(__DIR__.'/Database.php');
 
 class Recover extends Database {
 	public $row;

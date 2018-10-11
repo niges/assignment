@@ -1,6 +1,6 @@
 <?php 
 
-include_once(__DIR__.'/../controller/Database.php');
+include_once(__DIR__.'/Database.php');
 include_once(__DIR__.'/../controller/Meta.php');
 
 
@@ -10,99 +10,77 @@ class Image extends Database {
 
 
 	public function selectid($data) {
- 		foreach ($data as $key => $value) {
- 			$condition = $key . '=' ."'$value'";
- 		}
- 		$sql = "SELECT id FROM " .$this->table . " WHERE " . $condition;
- 
- 		$query = mysqli_query($this->connection,$sql);
- 		$rows = array();
- 		while($row = mysqli_fetch_assoc($query)) {
- 			$rows[] = $row;
- 		}
- 		return $rows;
- 		
+
+ 		$database = new Database();
+		// $result = $database->id_select($data,$this->table);
+
+		$new = array("id");
+		$result = $database->select2($new,$data,$this->table);
+
+		return $result;
  	}
 
 
 
 	public function add_image($data) {
-		$condition = "";
-		foreach ($data as $key => $value) {
-			$condition .= $key . '=' . "'$value'" . ',';
-			
-			# code...
-		}
-		$condition =rtrim($condition,',');
-		$sql = "INSERT INTO ". $this->table . " SET " . $condition;
-		$result = mysqli_query($this->connection,$sql);
-
 		
-
-
+		$database = new Database();
+		$database->insert($data,$this->table);
 
 	}
 
-	public function show_images() {
-		//select * from tablename 
-		$sql = "select * from " .$this->table;
 
-		$query = mysqli_query($this->connection,$sql);
-
-		$rows = array();
-		while ($row = mysqli_fetch_assoc($query)) {
-			$rows[] = $row;
-		}
-		return $rows;
-
+	public function show_images() { //ok
 		
+		$database = new Database();
+		$result = $database->show($this->table);
+		return $result;	
 		
 	}
-	public function delete_image($data) {
+
+	public function delete_image($data) { //ok
+
 		foreach ($data as $key => $value) {
 			$condition = $key . '=' .$value;
 		}
+		// $condition = $this->condition_fe($data);
 		
-		$selectphoto = "SELECT image FROM ". $this->table . " WHERE " . $condition;
-		$query = mysqli_query($this->connection,$selectphoto);
-		$result = mysqli_fetch_array($query);
+		// $selectphoto = "SELECT image FROM ". $this->table . " WHERE " . $condition;
 
+		// $query = mysqli_query($this->connection,$selectphoto);
+		// $result = mysqli_fetch_array($query);
 
-		foreach ($result as $field) {
-			$name = $field;
-			
-		}
-
-		$sql = "DELETE FROM " .$this->table . " WHERE " . $condition;
-		
-		$query = mysqli_query($this->connection,$sql);	
-		// if ($query == true) {
-		// 	unlink("../static/upload/" . $name);
+		// foreach ($result as $field) {
+		// 	$name = $field;
 			
 		// }
+	
+
+
+		// // return $name;
+	
+
+		$database = new Database();
+		$image = $database->image_select($data,$this->table);
+
+		// if ($image) {
+		// 	unlink("../static/upload/" . $image);
+		// }
 		
+		$result = $database->delete($data,$this->table);
+		return $result;
 
-
-		return $query;	
 	}
+
 	//only_Selected for show images
 
-	public function only_selected($data) {
+	public function only_selected($data) { //ok
 
-		foreach ($data as $key => $value) {
-			$condition = $key . '=' . $value;
-		}
 		
-		$sql = "SELECT image,id from " .$this->table . " WHERE " .$condition ;
-
-		$query = mysqli_query($this->connection,$sql);
-
-
-		$rows = array();
-		while($row = mysqli_fetch_assoc($query)) {
-			$rows[] = $row;
-		}
-		return $rows;
+		$database = new Database();
+		$result = $database->image_select($data,$this->table);
+	
+		return $result;
 
 
 	}
@@ -110,3 +88,5 @@ class Image extends Database {
 	
 	
 }
+
+

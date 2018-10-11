@@ -49,6 +49,10 @@ include_once(__DIR__.'/../data/Settings.php');
 						$id = $_GET['id'];
 						$where = array( 'id' => $id);
 						$row = $crud->select_data($where);
+						foreach ($row as $key => $value) {
+							
+						}
+
 					}
 
 				?>
@@ -60,10 +64,10 @@ include_once(__DIR__.'/../data/Settings.php');
 							<td><input type="hidden" name="id" value="<?php echo $id; ?>"> </td>
 						</tr>
 						<tr>
-							<td>Title:<input type="text" name="title" class="form-control" value="<?php echo $row['title'] ?>"></td>
+							<td>Title:<input type="text" name="title" class="form-control" value="<?php echo $value['title'] ?>"></td>
 						</tr>
 						<tr>
-							<td>Body:<textarea name="body" rows="10" cols="100" class="form-control" ><?php echo $row['body'] ?></textarea></td>
+							<td>Body:<textarea name="body" rows="10" cols="100" class="form-control" ><?php echo $value['body'] ?></textarea></td>
 						</tr>
 
 						

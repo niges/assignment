@@ -10,7 +10,7 @@ include_once(__DIR__.'/../data/Settings.php');
 	if (isset($_GET['show'])) {
 		$data = array( 'page_id' => $_GET['id']);
 		$row = $meta->check_images($data);
-		
+
 		$imageid = ' ';
 	
 		foreach ($row as $key => $value) {
@@ -23,6 +23,8 @@ include_once(__DIR__.'/../data/Settings.php');
 		$selectimage = array('id' => $imageid);
 
 		$imagesearch = $image->only_selected($selectimage);
+
+
 
 ?>
 
@@ -66,6 +68,7 @@ include_once(__DIR__.'/../data/Settings.php');
 
 					<?php
 					foreach ($imagesearch as $key => $value) {
+
 						
 					?>
 					<?php 

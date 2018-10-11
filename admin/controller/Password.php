@@ -10,7 +10,7 @@ if (isset($_POST['change'])) {
 	$opassword = $_POST['opassword'];
 	$npassword = $_POST['npassword'];
 	if (!empty($email) && !empty($opassword) && !empty($npassword)) {
-		if( $passwordchange->checkOldPassword($opassword) == true ) {
+		if( $passwordchange->check_old_password($opassword) == true ) {
 
 				$data = array(
 				'email' => $email,
