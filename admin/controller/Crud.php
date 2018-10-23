@@ -3,31 +3,51 @@
 require_once(__dir__.'/../data/Crud.php');
 require_once(__dir__.'/../data/Settings.php');
 
-
-
  $crud = new Crud();
 
-//not validated yet 
  if (isset($_POST['add'])) { 
-	if (empty($_POST['title']) ||  empty($_POST['body'])) {
+	if (empty($_POST['title']) ||  empty($_POST['body']) || $_FILES['file']['size']==0) {
 		$message = $crud->error;
-		echo "You must enter title and body";
+		echo "You must enter title and body and File";
 	} else {
 		$file = $_FILES['file'];
-		
-		
+	
 		$imagepath = "../static/upload/";
+		$cropimagepath = "../static/upload/crop/";
 
 		$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-		$newname = md5(time() . rand()) . '.' . $ext;
+		$name = md5(time() . rand()); 
+		$newname =  $name . '.' . $ext;
 		$tmpname = $file['tmp_name'];
-
-
 
 		move_uploaded_file($tmpname, $imagepath . $newname);
 
+			if ($ext == "jpg") {
+			$cropname = $name . '-thumbnail.' . $ext;
+			$im = imagecreatefromjpeg($imagepath.$newname);
+			$sizeheight = '250';
+			$sizewidth = '250';
+			$im2 = imagecrop($im, ['x'=>0, 'y'=>0, 'width'=> $sizewidth , 'height' => $sizeheight]);
+				if ($im2 !== FALSE) {
+					imagepng($im2,$cropimagepath.$cropname);
+					imagedestroy($im2);
+				}
+			} elseif ($ext == "PNG") {
+				$cropname = $name . '-thumbnail.' . $ext;
+				$im = imagecreatefrompng($imagepath.$newname);
+				$sizeheight = '250';
+				$sizewidth = '250';
+				$im2 = imagecrop($im, ['x'=>0, 'y'=>0, 'width'=> $sizewidth , 'height' => $sizeheight]);
+				if ($im2 !== FALSE) {
+					imagepng($im2,$cropimagepath.$cropname);
+					imagedestroy($im2);
+				}
+			} else {
+				echo "Extension Not Found";
+			}
+
 		//insert into image table
-		$insertimage = array('image' => $newname);
+		$insertimage = array('image' => $newname,'crop'=> $cropname);
 		$result = $image->add_image($insertimage);
 
 		$dataforimage = array('image' => $newname);
@@ -39,8 +59,6 @@ require_once(__dir__.'/../data/Settings.php');
 		foreach ($row as $key => $value) {
 			$result = $value['id'];
 		}
-
-
 
 		$data =array(
 				'title' => $_POST['title'],
@@ -63,27 +81,17 @@ require_once(__dir__.'/../data/Settings.php');
 						'page_id' 	=> $value['id'],
 						'images_id' => $result
 						);
-
 			if($meta->insert_metadata($metadata)) {
 
-				
 				$urlresult = $settings->Setting();
 				foreach ($urlresult as $key => $url) {
 
 					header('location:http://localhost/newassign/admin/view/page-manager.php');
 
 				}
-
 			}
-
-
-
-			
-			
 		}
-	}
-	
-	
+	}	
 }
 
 if (isset($_GET['delete'])) {

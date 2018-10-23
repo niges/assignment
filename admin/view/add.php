@@ -1,11 +1,7 @@
 <?php
-// include('../action.php');
+
 include(__DIR__.'/layouts/header.php');
 include(__DIR__.'/Dashboard.php');
-
-// require_once('../data/Settings.php');
-// require_once($path.'/newassign/admin/Controller/Crud.php');
-
 include(__DIR__.'/../controller/Crud.php');
 
 ?>
@@ -18,13 +14,16 @@ include(__DIR__.'/../controller/Crud.php');
 					if (isset($message)) 
 						echo '<label class="alert">'.$message."</label>";
 				?>
-				<form method="post" enctype="multipart/form-data">
+				<div class="well" id="error">
+					
+			
+				<form method="post" name="pageform" onsubmit="return pageValidation();" enctype="multipart/form-data">
 					<table class="table table-bordered">
 						<tr>
 							<td>Title:<input type="text" name="title" class="form-control"></td>
 						</tr>
 						<tr>
-							<td>Body:<textarea name="body" rows="10" cols="100" class="form-control"></textarea></td>
+							<td>Body:<textarea name="body" rows="10" cols="100" class="form-control ckeditor"></textarea></td>
 						</tr>
 						<tr>
 							<td> 
@@ -43,6 +42,7 @@ include(__DIR__.'/../controller/Crud.php');
 					
 					</table>
 				</form>
+			    </div>
 			</div>
 		</div>
 	</div>

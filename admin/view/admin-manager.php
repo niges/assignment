@@ -1,19 +1,10 @@
 <?php 
-// include('../action.php');
-// include('dashboard.php');
- // if(!isset($_SESSION['email'])) {
- // 	header("Location:../login.php");
- // }
+
 include_once(__DIR__.'/layouts/header.php');
 include_once(__DIR__.'/dashboard.php');
 include_once(__DIR__.'/../controller/Password.php');
 
-
-
-
 ?>
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">

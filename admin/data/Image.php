@@ -8,85 +8,53 @@ class Image extends Database {
 
 	public $table = "images";
 
-
 	public function selectid($data) {
 
- 		$database = new Database();
-		// $result = $database->id_select($data,$this->table);
-
 		$new = array("id");
-		$result = $database->select2($new,$data,$this->table);
+		$result = $this->select($new,$data,$this->table);
 
 		return $result;
  	}
 
-
-
 	public function add_image($data) {
 		
-		$database = new Database();
-		$database->insert($data,$this->table);
+		$this->insert($data,$this->table);
 
 	}
 
 
-	public function show_images() { //ok
+	public function show_images() { 
 		
-		$database = new Database();
-		$result = $database->show($this->table);
+		$result = $this->show($this->table);
 		return $result;	
 		
 	}
 
-	public function delete_image($data) { //ok
+	public function delete_image($data) {
 
 		foreach ($data as $key => $value) {
 			$condition = $key . '=' .$value;
 		}
-		// $condition = $this->condition_fe($data);
-		
-		// $selectphoto = "SELECT image FROM ". $this->table . " WHERE " . $condition;
 
-		// $query = mysqli_query($this->connection,$selectphoto);
-		// $result = mysqli_fetch_array($query);
+		$image = $this->image_select($data,$this->table); 
 
-		// foreach ($result as $field) {
-		// 	$name = $field;
-			
-		// }
-	
-
-
-		// // return $name;
-	
-
-		$database = new Database();
-		$image = $database->image_select($data,$this->table);
-
-		// if ($image) {
+		// if ($image==true) {
 		// 	unlink("../static/upload/" . $image);
 		// }
 		
-		$result = $database->delete($data,$this->table);
+		$result = $this->delete($data,$this->table);
 		return $result;
 
 	}
 
 	//only_Selected for show images
 
-	public function only_selected($data) { //ok
+	public function only_selected($data) { 
 
-		
-		$database = new Database();
-		$result = $database->image_select($data,$this->table);
+		$result = $this->image_select($data,$this->table);
 	
 		return $result;
-
-
 	}
-
-	
-	
 }
 
 

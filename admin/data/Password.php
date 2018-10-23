@@ -7,22 +7,17 @@ class password extends Database {
 	public $table = 'admin';
 
 	public function update_password($data) {
-		$condition = "";
-		foreach ($data as $key => $value) {
-			$condition .= $key . '=' . "'$value'". ",";
-		}
-		$condition=rtrim($condition,',');
-		$sql = "UPDATE " .$this->table . " SET " . $condition ;
-	
-		$query = mysqli_query($this->connection,$sql);
-		return $query;
+
+		$result = $this->update($data,$id="",$this->table);
+		return $result;
 	}
 
 	public function check_old_password($opassword) {
-		$sql = "SELECT password FROM " .$this->table . " WHERE password=" . "'$opassword'";
 
+		$opassword1 = md5($opassword);
+		
+		$sql = "SELECT password FROM " .$this->table . " WHERE password=" . "'$opassword1'";
 		$query = mysqli_query($this->connection,$sql);
-	
 		$result = mysqli_num_rows($query);
 		return $result;
 		

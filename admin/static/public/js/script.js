@@ -9,11 +9,25 @@ function validateForm() {
 	if(email.value.match(pattern) && password.value != "") {
 		return true;
 	} else {
-		alert('Email and Password Not Matched');
+		alert('Email Not Matched');
 		return false;
 	}
-
-
-	
-
 }
+
+
+function pageValidation() {
+	title = document.forms['pageform']['title'];
+	body = document.forms['pageform']['body'];
+
+
+	if (title.value == "") {
+		alert('Title is Empty');
+		return false;
+	} 
+	if (body.value == "") {
+		alert('Body is Empty');
+		return false;
+	} 
+	
+	return true;
+} 

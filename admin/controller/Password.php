@@ -2,7 +2,6 @@
 
 require_once(__dir__.'/../data/Password.php');
 
-
 $passwordchange = new Password();
 
 if (isset($_POST['change'])) {
@@ -13,8 +12,8 @@ if (isset($_POST['change'])) {
 		if( $passwordchange->check_old_password($opassword) == true ) {
 
 				$data = array(
-				'email' => $email,
-				'password' => $npassword,
+						'email' => $email,
+						'password' => md5($npassword),
 				);
 		
 			if($passwordchange->update_password($data)) {
@@ -24,13 +23,9 @@ if (isset($_POST['change'])) {
 		
 		} else {
 		echo "Old password not matched";
-	}
-
+		}
+		
 	} else {
 		echo "Empty password";
 	}
-
- 
-
-	
 }

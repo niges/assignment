@@ -10,6 +10,9 @@ if (isset($_POST['login'])) {
 	$username =mysqli_real_escape_string(Validation::get_instance()->connection, trim($_POST['u_email']));
 	$password = mysqli_real_escape_string(Validation::get_instance()->connection,trim($_POST['password']));
 
+	// $password1 = hash_hmac('sha256', 'salt' . $password, 'helloworld');
+	$password1 = md5($password);
+
 	if (!empty($_POST['remember'])) {
 		setcookie("email", $username, time() + (10*365*24*60*60));
 		setcookie("password", $password, time()+ (10*365*24*60*60));
@@ -20,13 +23,13 @@ if (isset($_POST['login'])) {
 		
 	}
 
-	
 	$data =array( 
 		'email' => $username,
-		'password' => $password
+		'password' => $password1
 		);
 	
 	if($validation->required_validation($data)) {
+
 		if($validation->data_validation($data)) {
 			$_SESSION['email'] = $_POST['u_email'];
 			header("Location:dashboard.php");
@@ -36,10 +39,7 @@ if (isset($_POST['login'])) {
 				
 	} else {
 		$message = $validation->error;
-	
 	}
-
-	
 
 }
 

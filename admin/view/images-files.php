@@ -5,8 +5,6 @@ include_once(__DIR__.'/../Controller/Image.php');
 include_once(__DIR__.'/../Controller/Meta.php');
 include_once(__DIR__.'/../data/Settings.php');
 
-
-
 	if (isset($_GET['show'])) {
 		$data = array( 'page_id' => $_GET['id']);
 		$row = $meta->check_images($data);
@@ -24,8 +22,6 @@ include_once(__DIR__.'/../data/Settings.php');
 
 		$imagesearch = $image->only_selected($selectimage);
 
-
-
 ?>
 
 <div class="container">
@@ -41,7 +37,7 @@ include_once(__DIR__.'/../data/Settings.php');
 						<tr>
 							<td> 
 								<div class="input-group-append">
-    								<span class="input-group-text" id=""><input type="file" name="file"></span>
+    								<span class="input-group-text"><input type="file" name="file"></span>
  								 </div>
  							</td>
  						</tr>
@@ -49,8 +45,7 @@ include_once(__DIR__.'/../data/Settings.php');
 							<td>
 								<input type="submit" name="upload" value="Add" class="btn btn-primary">
 							</td>
-						</tr>
-						
+						</tr>	
 					
 					</table>
 				</form>
@@ -67,8 +62,10 @@ include_once(__DIR__.'/../data/Settings.php');
 			<td>
 
 					<?php
-					foreach ($imagesearch as $key => $value) {
+			
 
+					foreach ($imagesearch as $key => $value) {
+					
 						
 					?>
 					<?php 

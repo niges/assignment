@@ -4,17 +4,13 @@ include_once(__DIR__.'/Database.php');
 
 class Settings extends Database {
 
+	public $table="settings";
+
 	public function setting() {
 
-		$sql = " Select server_root from settings";
-		$query = mysqli_query($this->connection,$sql);
-		$rows = array();
-		while ($row = mysqli_fetch_assoc($query)) {
-			$rows[] = $row;
-		}
-		
-		return $rows;
-		
+		$new = array("*");
+		$result = $this->select($new,$data=0,$this->table);
+		return $result;
 	}
 
 }
