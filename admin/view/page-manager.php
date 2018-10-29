@@ -11,7 +11,6 @@ include_once(__DIR__.'/../data/Settings.php');
 		<div class="row">
 			<div clas="col-md-10">
 				
-			
 				<?php
 						$urlresult = $settings->Setting();
 						foreach ($urlresult as $key => $url) {

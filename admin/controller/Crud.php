@@ -5,7 +5,7 @@ require_once(__dir__.'/../data/Settings.php');
 
  $crud = new Crud();
 
- if (isset($_POST['add'])) { 
+if (isset($_POST['add'])) { 
 	if (empty($_POST['title']) ||  empty($_POST['body']) || $_FILES['file']['size']==0) {
 		$message = $crud->error;
 		echo "You must enter title and body and File";
@@ -32,7 +32,7 @@ require_once(__dir__.'/../data/Settings.php');
 					imagepng($im2,$cropimagepath.$cropname);
 					imagedestroy($im2);
 				}
-			} elseif ($ext == "PNG") {
+			} elseif ($ext == "PNG" || $ext == "png") {
 				$cropname = $name . '-thumbnail.' . $ext;
 				$im = imagecreatefrompng($imagepath.$newname);
 				$sizeheight = '250';
@@ -60,10 +60,13 @@ require_once(__dir__.'/../data/Settings.php');
 			$result = $value['id'];
 		}
 
+		$slug = $crud->create_url_slug($_POST['title']);
+
 		$data =array(
 				'title' => $_POST['title'],
 				'body' => $_POST['body'],
-				
+				'parent_id' => $_POST['page'],
+				'slug' => $slug
 				);
 		
 		if($crud->verify_add($data)) {
@@ -107,13 +110,10 @@ if (isset($_POST['update'])) {
 	$where = array('id' => $id);
 	$data = array(
 		'title' => $_POST['title'],
-		'body' => $_POST['body'],
-		
-		
+		'body'  => $_POST['body'],
 	);
 	
 	if($crud->update_data($data,$where)) {
 		header("Location:http://localhost/newassign/admin/view/page-manager.php");
 	}
-	
 }

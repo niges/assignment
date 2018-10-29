@@ -18,14 +18,15 @@ if (isset($_POST['change'])) {
 		
 			if($passwordchange->update_password($data)) {
 			
-				echo "password changed";
+				$alert = $passwordchange->message;
+
 			}
 		
 		} else {
-		echo "Old password not matched";
+		$alert = $passwordchange->message;
 		}
 		
 	} else {
-		echo "Empty password";
+		$alert = 'Empty Password';
 	}
 }

@@ -13,14 +13,14 @@ include_once(__DIR__.'/../data/Settings.php')
 					if (isset($message)) 
 						echo '<label class="alert">'.$message."</label>";
 				?>
-				<form method="post" name="form" onsubmit="return validateForm();">
+				<form method="post" name="form" id="login"">
 
 					<table class="table table-bordered">
 						<tr>
-							<td>Email:<input type="email" name="u_email" class="u_email form-control"  value="<?php if(isset($_COOKIE["email"])) { echo $_COOKIE["email"]; } ?>"></td>
+							<td>Email:<input type="email" name="u_email" class="form-control"  value="<?php if(isset($_COOKIE["email"])) { echo $_COOKIE["email"]; } ?>"></td>
 						</tr>
 						<tr>
-							<td>password:<input type="password" name="password" class="password form-control" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>"</td>
+							<td>password:<input type="password" name="password" class="form-control" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>"</td>
 						</tr>
 						<tr>
 							<td>Remember Me: <input type="checkbox" name="remember"></td>
@@ -39,7 +39,7 @@ include_once(__DIR__.'/../data/Settings.php')
 						</tr>
 
 						<tr>
-							<td><input type="submit" name="login" value="Login" class="btn btn-primary"></td>
+							<td><input type="submit" name="login" id="submit" value="Login" class="btn btn-primary"></td>
 						</tr>
 					
 					</table>

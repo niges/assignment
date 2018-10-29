@@ -26,14 +26,14 @@ include_once(__DIR__.'/../data/Settings.php');
 
 <div class="container">
 	<div class="row">
-	<div class="col-md-5" style="margin-top:13px;">
-		
-	
+		<div class="col-md-5" style="margin-top:13px;">
+
 				<form method="post" enctype="multipart/form-data">
 					<table class="table table-bordered">
 						<tr>
 							<td>Image Upload:</td>
 						</tr>
+
 						<tr>
 							<td> 
 								<div class="input-group-append">
@@ -41,17 +41,16 @@ include_once(__DIR__.'/../data/Settings.php');
  								 </div>
  							</td>
  						</tr>
+
 						<tr>
 							<td>
 								<input type="submit" name="upload" value="Add" class="btn btn-primary">
 							</td>
 						</tr>	
-					
 					</table>
 				</form>
+		</div>
 	</div>
-</div>
-	
 </div>
 
 

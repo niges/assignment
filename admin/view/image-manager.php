@@ -42,23 +42,18 @@ include_once(__DIR__.'/../data/Settings.php')
 	</div>
 
 
-		<div class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
-				
 				<form method="post">
-
 					<table class="table table-bordered">
-
 						<tr>
-							<td>ID</td>
 
+							<td>ID</td>
 							<td>Manage</td>
 							<td></td>
 							<td></td>
-							
-						
-						
+
 						</tr>
 						 <?php 
 
@@ -74,25 +69,17 @@ include_once(__DIR__.'/../data/Settings.php')
 								$urlresult = $settings->Setting();
 								foreach ($urlresult as $key => $url) {
 									
-								}
-								
+								}	
 
 							?>
 							<td><img width="150" height="150" src="<?php echo $url['server_root']; ?>admin/static/upload/<?php echo $value['image'] ?>"></td>
 							
 							<td><a href="<?php echo $url['server_root']; ?>admin/view/image-manager.php/?delete=1&id=<?php echo $value['id']?>" class="btn btn-danger">Delete</a></td>
 						
-						
 						</tr>
 						<?php }  ?>
-				
 					</table>
 				</form>
-
-			
-				
-			
-				
 			</div>
 		</div>
 	</div>

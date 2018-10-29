@@ -5,7 +5,7 @@ require_once(__dir__.'/../data/Image.php');
 $image = new Image();
 if (isset($_POST['upload'])) { //not validated yet 
 	if (($_FILES['file']['size'] == 0) ) {
-		echo "Empty Files";
+		$message = "Empty Files";
 	} else {
 		$file = $_FILES['file'];
 		$imagepath = "../static/upload/";
@@ -70,9 +70,7 @@ if (isset($_POST['upload'])) { //not validated yet
 			// echo "Image added successfully";
 
 		// }
-	}
-	
-	
+	}	
 }
 if (isset($_GET['delete'])) {
 	

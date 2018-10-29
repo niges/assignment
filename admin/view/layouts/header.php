@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="http://localhost/newassign/admin/static/public/js/ckeditor/ckeditor.js"></script>
 	<script src="http://localhost/newassign/admin/static/public/lightbox/dist/js/lightbox-plus-jquery.min.js"></script>
 	<link href="http://localhost/newassign/admin/static/public/lightbox/dist/css/lightbox.min.css" rel="stylesheet">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 
 </head>
 <body>

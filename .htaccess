@@ -1,1 +1,7 @@
-ErrorDocument 404 http://localhost/newassign/admin/view/login.php
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)/(.*)/$ /newassign/?id=$1&url=$2 [L]
+
+ErrorDocument 404 http://localhost/newassign

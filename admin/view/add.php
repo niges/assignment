@@ -9,15 +9,15 @@ include(__DIR__.'/../controller/Crud.php');
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10">
+			<div class="col-md-8">
 				<?php  
-					if (isset($message)) 
-						echo '<label class="alert">'.$message."</label>";
+					if (isset($alert)) 
+						echo '<label class="alert">'.$alert."</label>";
 				?>
 				<div class="well" id="error">
 					
 			
-				<form method="post" name="pageform" onsubmit="return pageValidation();" enctype="multipart/form-data">
+				<form method="post" name="pageform" id="add" enctype="multipart/form-data">
 					<table class="table table-bordered">
 						<tr>
 							<td>Title:<input type="text" name="title" class="form-control"></td>
@@ -26,10 +26,30 @@ include(__DIR__.'/../controller/Crud.php');
 							<td>Body:<textarea name="body" rows="10" cols="100" class="form-control ckeditor"></textarea></td>
 						</tr>
 						<tr>
+							<td>
+								<select class="form-control" name="page">
+									<option value='-1'>
+										None
+									</option>
+								<?php
+								$title = $crud->show_parent();
+								foreach ($title as $key => $value) {
+									
+								?>
+									
+									<option value="<?php echo $value['id'] ?>">
+										<?php echo $value['title']; ?>
+									</option>
+								<?php } ?>
+								</select>
+	
+							</td>
+						</tr>
+						<tr>
 							<td> 
 								<div class="input-group-append">
     								<span class="input-group-text"><input type="file" name="file"></span>
- 								 </div>
+ 								</div>
  							</td>
 						</tr>
 

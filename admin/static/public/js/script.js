@@ -31,3 +31,92 @@ function pageValidation() {
 	
 	return true;
 } 
+
+
+
+$(document).ready(function() {
+	$.validator.addMethod(
+	    "regex",
+	    function(value, element, regexp) {
+	        return regexp.test(value);
+	    },
+	    "Please enter valid phone Number"
+	);
+
+	$('#request').validate({
+		errorClass: 'error',
+		rules: {
+			fname: {
+				required:true,
+			},
+			lname: {
+				required:true,
+			},
+			email: {
+				required:true,
+				email:true,
+
+			},
+			phone: {
+				required:true,
+				regex: /^\+\d?[\s]?(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/,
+				
+			},
+			
+		},
+		messages: {
+			email: "please enter valid email",
+			
+		}
+
+	});
+});
+
+
+function getCity(val) {
+	$.ajax({	
+		type:"GET",
+		url: "http://localhost/newassign/admin/data/States.php/?id=" + val,
+		success:function(data){
+			$("#state").html(data);
+		},
+		error: function(data) {
+
+		}
+	});
+}
+
+$(document).ready(function() {
+	$('#add').validate({
+		rules: {
+			title:{
+				required:true
+			},
+			body: {
+				required:true,
+			},
+			file: {
+				required:true,
+			}
+		}
+	});
+});
+$(document).ready(function() {
+	$('#login').validate({
+		rules: {
+			u_email: {
+				required:true,
+				email:true,	
+			},
+			password: {
+				required: true
+			}
+		}
+	});
+});
+
+
+
+
+
+

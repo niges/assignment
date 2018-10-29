@@ -12,7 +12,7 @@ include_once(__dir__.'/../controller/SiteConfiguration.php');
 		<div class="col-md-8">
 			<?php  
 					if (isset($message)) 
-						echo '<label class="ok">'.$message."</label>";
+						echo '<label class="well">'.$message."</label>";
 			?>
 				<form method="post" enctype="multipart/form-data">
 					<?php 

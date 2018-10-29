@@ -48,7 +48,6 @@ class Database {
 
 		$sql = "select * from ". $table ;
 		$query = mysqli_query($this->connection,$sql);
-
 		$result = $this->rows_show($query);
 		return $result;
 	}
@@ -121,6 +120,7 @@ class Database {
                }
                $sql = substr($sql,0,-4);
            }
+           
            $result= mysqli_query($this->connection,$sql);
            // $fetch = $this->rows_show($result);
 
@@ -128,6 +128,11 @@ class Database {
 
        }
        return false;
+   }
+   public function slug_select($slug,$table) {
+   		$select = "SELECT * FROM " .$table." WHERE slug LIKE "."'$slug%'" ;
+   		$query = mysqli_query($this->connection,$select);
+   		return $query;
    }
 }
 $data = new Database();
