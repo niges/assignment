@@ -1,0 +1,16 @@
+RewriteEngine on
+
+RewriteBase /newassign/admin/
+
+RewriteRule ^$ view/dashboard.php
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule (.*) view/$1 [L]
+
+ErrorDocument 500 http://localhost/newassign 
+
+ErrorDocument 404 http://localhost/newassign
+

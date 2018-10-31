@@ -65,8 +65,8 @@
           'verify_peer' => false,
           'verify_peer_name' => false,
           'allow_self_signed' => true
-      )
-     );
+        )
+      );
 
       $mail->Host = "smtp.gmail.com";  // Specify main and backup SMTP servers
       $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -92,10 +92,7 @@
           echo 'There was an error sending the contact form email. <br>';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
       } 
-
-
     } 
-
 }
 $phpmails = new Phpmailers();
 

@@ -81,8 +81,7 @@ include_once(__DIR__.'/../controller/Meta.php');
 
 		if((mysqli_num_rows($query))) {
 			foreach ($result as $key => $value) {
-				$slugs[] = $value['slug'];
-			
+				$slugs[] = $value['slug'];	
 			}
 			if(in_array($str, $slugs)){
 			    $count = 1;
@@ -99,6 +98,7 @@ include_once(__DIR__.'/../controller/Meta.php');
 			return preg_replace('/-{2,}/', '-', $str);
 		}
 	}
+	
 	public function get_title($id) {
 		$data = array('id' => $id);
 		$new = array('slug');

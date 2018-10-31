@@ -2,6 +2,8 @@
 
 require_once(__dir__.'/../data/Crud.php');
 require_once(__dir__.'/../data/Settings.php');
+require_once(__dir__.'/../data/Image.php');
+
 
  $crud = new Crud();
 
@@ -85,13 +87,7 @@ if (isset($_POST['add'])) {
 						'images_id' => $result
 						);
 			if($meta->insert_metadata($metadata)) {
-
-				$urlresult = $settings->Setting();
-				foreach ($urlresult as $key => $url) {
-
-					header('location:http://localhost/newassign/admin/view/page-manager.php');
-
-				}
+				header("location:".$server_root."admin/view/page-manager.php");
 			}
 		}
 	}	
@@ -100,8 +96,7 @@ if (isset($_POST['add'])) {
 if (isset($_GET['delete'])) {
 	$id = $_GET['id'];
 	$did = array( 'id' => $id);
-	$result = $crud->delete_data($did);
-	
+	$crud->delete_data($did);
 	
 }
 
@@ -114,6 +109,6 @@ if (isset($_POST['update'])) {
 	);
 	
 	if($crud->update_data($data,$where)) {
-		header("Location:http://localhost/newassign/admin/view/page-manager.php");
+		header("Location:".$server_root."/admin/view/page-manager.php");
 	}
 }

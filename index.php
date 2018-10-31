@@ -4,6 +4,7 @@ include_once(__dir__.'/admin/view/layouts/header.php');
 include_once(__DIR__.'/admin/controller/Image.php');
 include_once(__DIR__.'/admin/controller/Crud.php');
 include_once(__DIR__.'/admin/data/Settings.php');
+
 ?>
 
 	<div class="container">

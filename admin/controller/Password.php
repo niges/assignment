@@ -24,8 +24,7 @@ if (isset($_POST['change'])) {
 		
 		} else {
 		$alert = $passwordchange->message;
-		}
-		
+		}	
 	} else {
 		$alert = 'Empty Password';
 	}

@@ -20,7 +20,7 @@ include_once(__DIR__.'/../data/Settings.php');
 				
 				<form method="post">
 
-					<button class="btn btn-info" style="margin-left: 15px; margin-top: 10px;"><a href="<?php echo $url['server_root']; ?>admin/view/add.php" class="btn btn-info">Add page</a></button>
+					<button class="btn btn-info" style="margin-left: 15px; margin-top: 10px;"><a href="<?php echo $url['server_root']; ?>admin/add.php" class="btn btn-info">Add page</a></button>
 
 				</form>
 			</div>

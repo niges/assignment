@@ -37,10 +37,15 @@ class Image extends Database {
 		}
 
 		$image = $this->image_select($data,$this->table); 
+		foreach ($image as $key => $value) {
+			
+		}
 
-		// if ($image==true) {
-		// 	unlink("../static/upload/" . $image);
-		// }
+		if ($image==true) {
+			unlink("../static/upload/" . $value['image']);
+			unlink("../static/upload/crop/" . $value['crop']);
+
+		}
 		
 		$result = $this->delete($data,$this->table);
 		return $result;

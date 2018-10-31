@@ -5,6 +5,7 @@ include_once(__dir__.'/admin/controller/Image.php');
 include_once(__dir__.'/admin/controller/Crud.php');
 include_once(__dir__.'/admin/data/Settings.php');
 
+
 ?>
 	<div class="container">
  		<div class="row">
@@ -12,6 +13,7 @@ include_once(__dir__.'/admin/data/Settings.php');
 				<?php 
 
 					$urlresult = $settings->Setting();
+
 					foreach ($urlresult as $key => $url) {	
 
 					}			
@@ -50,7 +52,7 @@ include_once(__dir__.'/admin/data/Settings.php');
 
 					          ?>
 
-					          <a class="dropdown-item" href="<?php echo $url['server_root'] ?><?php echo $sub['slug'] ?>/<?php echo $value['id'] ?>/">
+					          <a class="dropdown-item" href="<?php echo $url['server_root'] ?><?php echo $sub['slug'] ?>/<?php echo $sub['id'] ?>/">
 					         	
 					          	<ul class="navbar-nav">
 					          	

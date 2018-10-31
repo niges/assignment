@@ -41,13 +41,11 @@ if (isset($_POST['upload'])) { //not validated yet
 			echo "Extension Not Found";
 		}
 
-		
 		$data =array(
 			'image' => $newname,
 			'crop' => $cropname
 		);
 	
-		
 		$image->add_image($data);
 
 		if (!empty($_GET['id'])) {
@@ -72,7 +70,7 @@ if (isset($_POST['upload'])) { //not validated yet
 		// }
 	}	
 }
-if (isset($_GET['delete'])) {
+if (isset($_GET['delete_image'])) {
 	
 	$data = array( 'id' => $_GET['id']);
 
@@ -94,7 +92,6 @@ if (isset($_GET['delete'])) {
 		if($image->delete_image($data)) {
 			header('Location:' . $_SERVER['PHP_SELF']);
 		}
-
 	}
 }
 

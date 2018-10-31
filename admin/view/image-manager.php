@@ -74,7 +74,7 @@ include_once(__DIR__.'/../data/Settings.php')
 							?>
 							<td><img width="150" height="150" src="<?php echo $url['server_root']; ?>admin/static/upload/<?php echo $value['image'] ?>"></td>
 							
-							<td><a href="<?php echo $url['server_root']; ?>admin/view/image-manager.php/?delete=1&id=<?php echo $value['id']?>" class="btn btn-danger">Delete</a></td>
+							<td><a href="<?php echo $url['server_root']; ?>admin/view/image-manager.php/?delete_image=1&id=<?php echo $value['id']?>" class="btn btn-danger">Delete</a></td>
 						
 						</tr>
 						<?php }  ?>

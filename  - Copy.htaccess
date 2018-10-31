@@ -1,0 +1,28 @@
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)/(.*)/$ /newassign/?id=$1&url=$2 [L]
+
+ErrorDocument 404 http://localhost/newassign 
+
+RewriteEngine off
+
+RewriteEngine on
+
+RewriteBase /newassign/admin
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule /(.*) /newassign/admin/view/$1 [L]
+
+ErrorDocument 500 http://localhost/newassign 
+
+ErrorDocument 404 http://localhost/newassign
+
+
+
+

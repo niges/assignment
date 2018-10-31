@@ -33,11 +33,8 @@ if (isset($_POST['update'])) {
 			if($siteconfiguration->update_data($data)) {
 				$message = $siteconfiguration->error;
 			}
-			
 		}
-
 	
-		
 	// } else {
 	// 	echo ' You must Enter File';
 	// }
