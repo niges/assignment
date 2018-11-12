@@ -17,6 +17,7 @@ class Settings extends Database {
 			 $GLOBALS['logo'] = $value['logo'];
 			 $GLOBALS['site_name'] =  $value['site_name'];
 			 $GLOBALS['footer'] = $value['footer'];
+			 $GLOBALS['page_no'] = $value['pagination'];
 			
 		}
 		return $result;

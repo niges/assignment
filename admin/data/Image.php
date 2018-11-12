@@ -60,6 +60,13 @@ class Image extends Database {
 	
 		return $result;
 	}
+
+	public function select_image($data) {
+		$new = array('*');
+		$result = $this->select($new,$data,$this->table);
+		return $result;
+	}
+
 }
 
 

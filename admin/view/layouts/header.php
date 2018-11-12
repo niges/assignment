@@ -1,7 +1,7 @@
 
 <html>
 <head>
-	<title></title>
+	<title><?php if(isset($title)) { echo $title; } ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity
 	="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -24,26 +24,5 @@
 
 </head>
 <body>
-	<div class="container">
-		<div class="jumbotron">
-			<h1>	
-				<?php
-					include_once(__dir__.'/../../data/Settings.php');
-					include_once(__dir__.'/../../data/Database.php');
 
-					$settings = new Settings();
-					$footer = $settings->setting();
-
-				?>
-
-				<?php
-					foreach ($footer as $key => $value) {
-
-				?>
-				<img src="<?php echo $value['server_root'] ?>admin/static/upload/<?php echo $value['logo'] ?>">
-				<a href="<?php echo $value['server_root'] ?>index.php"><?php echo $value['site_name']; ?></a>
-			</h1>
-		<?php } ?>
-		</div>
-	</div>
 

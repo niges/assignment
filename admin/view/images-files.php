@@ -53,41 +53,26 @@ include_once(__DIR__.'/../data/Settings.php');
 	</div>
 </div>
 
-
-
 <div class="container">
 	<table class="table-bordered">
 		<tr>
 			<td>
-
-					<?php
+				<?php
+				foreach ($imagesearch as $key => $value) {
 			
-
-					foreach ($imagesearch as $key => $value) {
-					
+				?>
+				<?php 
+					$urlresult = $settings->Setting();
+					foreach ($urlresult as $key => $url) {
 						
-					?>
-					<?php 
-						$urlresult = $settings->Setting();
-						foreach ($urlresult as $key => $url) {
-							
-						}
-					?>
-					
-						<img width="150" height="150" src="<?php echo $url['server_root']; ?>admin/static/upload/<?php echo $value['image']  ?>" style="padding-right: 30px; margin-bottom: 15px;"> 
+					}
+				?>
+					<img width="150" height="150" src="<?php echo $url['server_root']; ?>admin/static/upload/<?php echo $value['image']  ?>" style="padding-right: 30px; margin-bottom: 15px;"> 
 
-						<a href="<?php echo $url['server_root']; ?>admin/view/images-files.php/?delete_image=1&id=<?php echo $value['id']?>" class="btn btn-danger"">Delete</a>
-					<?php } ?>
+					<a href="<?php echo $url['server_root']; ?>admin/view/images-files.php/?delete_image=1&id=<?php echo $value['id']?>" class="btn btn-danger"">Delete</a>
 
-
-						
-					
-
-
-					
+				<?php } ?>
 			</td>
-		
-		
 	</table>	
 </div>
 <?php			

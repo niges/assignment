@@ -31,16 +31,21 @@ include(__DIR__.'/../controller/Crud.php');
 									<option value='-1'>
 										None
 									</option>
-								<?php
-								$title = $crud->show_parent();
-								foreach ($title as $key => $value) {
-									
-								?>
-									
+									<?php
+									$title = $crud->show_parent();
+									foreach ($title as $key => $value) {
+										
+									?>
+
 									<option value="<?php echo $value['id'] ?>">
 										<?php echo $value['title']; ?>
 									</option>
-								<?php } ?>
+
+									<?php } ?>
+
+									<option value= '-2'>
+										Add in Foter
+									</option>
 								</select>
 	
 							</td>
@@ -66,4 +71,5 @@ include(__DIR__.'/../controller/Crud.php');
 			</div>
 		</div>
 	</div>
+	
 <?php include_once('layouts/footer.php') ?>

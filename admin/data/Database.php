@@ -52,7 +52,6 @@ class Database {
 		return $result;
 	}
 
-
 	public function update($data,$id,$table) {
 		$condition = "";
 		foreach ($data as $key => $value) {
@@ -88,7 +87,6 @@ class Database {
 		}
 		
 		$selectphoto = "SELECT id,image,crop FROM ". $table . " WHERE " . $condition;
-
 		$query = mysqli_query($this->connection,$selectphoto);
 		$result = $this->rows_show($query);
 		return $result;
@@ -120,7 +118,7 @@ class Database {
                }
                $sql = substr($sql,0,-4);
            }
-           
+          
            $result= mysqli_query($this->connection,$sql);
            // $fetch = $this->rows_show($result);
 
@@ -128,12 +126,29 @@ class Database {
 
        }
        return false;
-   }
-   public function slug_select($slug,$table) {
+    }
+
+    public function slug_select($slug,$table) {
    		$select = "SELECT * FROM " .$table." WHERE slug LIKE "."'$slug%'" ;
    		$query = mysqli_query($this->connection,$select);
    		return $query;
+    }
+
+   public function for_pagination($table) {
+
+	   	$sql = "SELECT COUNT(*) as pagination FROM $table";
+	   	$query = mysqli_query($this->connection,$sql);
+	   	$result = $this->rows_show($query);
+	   	return $result;
    }
+
+   public function show_post($table,$limit,$data_per_page) {
+
+		$sql = "select * from ". $table . " WHERE active=1 ORDER BY date DESC LIMIT ". $limit . ',' . $data_per_page;
+		$query = mysqli_query($this->connection,$sql);
+		$result = $this->rows_show($query);
+		return $query;
+	}
 }
 $data = new Database();
 

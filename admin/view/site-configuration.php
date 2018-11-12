@@ -44,7 +44,8 @@ include_once(__dir__.'/../controller/SiteConfiguration.php');
 
 					<input type="submit" name="update" value="update" class="btn btn-success">
 				</form>
-					<?php } ?>
+				
+				<?php } ?>
 		</div>
 	</div>
 </div>

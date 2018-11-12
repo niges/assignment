@@ -4,7 +4,6 @@ require_once(__dir__.'/../data/Crud.php');
 require_once(__dir__.'/../data/Settings.php');
 require_once(__dir__.'/../data/Image.php');
 
-
  $crud = new Crud();
 
 if (isset($_POST['add'])) { 

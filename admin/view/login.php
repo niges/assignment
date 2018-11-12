@@ -1,6 +1,7 @@
 
 <?php
 
+include_once(__DIR__.'/layouts/head.php');
 include_once(__DIR__.'/layouts/header.php');
 include(__DIR__.'/../Controller/validation.php');
 include_once(__DIR__.'/../data/Settings.php')
@@ -47,6 +48,3 @@ include_once(__DIR__.'/../data/Settings.php')
 			</div>
 		</div>
 	</div>
-<?php
-include('layouts/footer.php');
-?>

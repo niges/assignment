@@ -107,6 +107,13 @@ include_once(__DIR__.'/../controller/Meta.php');
 		return $result;
 	}
 
+	public function show_footer() {
+		$data = array('parent_id' => -2);
+		$new = array('*');
+		$result = $this->select($new,$data,$this->table1);
+		return $result;
+	}
+
 }
 
 

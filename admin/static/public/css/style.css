@@ -7,6 +7,9 @@
 .ok {
 	color: blue;
 }
+.success {
+    color:green;
+}
 /* Dropdown Button */
 .dropbtn {
     background-color: #343a40;
@@ -51,4 +54,10 @@
 
 .email-block {
     display: none;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }

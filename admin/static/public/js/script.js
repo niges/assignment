@@ -101,6 +101,7 @@ $(document).ready(function() {
 		}
 	});
 });
+
 $(document).ready(function() {
 	$('#login').validate({
 		rules: {
@@ -114,6 +115,8 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
 
 
 

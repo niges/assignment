@@ -39,9 +39,7 @@ include_once(__DIR__.'/../data/Settings.php');
 						foreach ($row as $key => $value) {
 							
 						}
-
 					}
-
 				?>
 				<form method="post">
 					<table class="table table-bordered">
@@ -122,17 +120,11 @@ include_once(__DIR__.'/../data/Settings.php');
 							</td>
 
 						</tr>
-
-					<?php } ?>
-		
+						<?php } ?>
 					</table>
 				</form>
-			
-				 
 			</div>
 		</div>
 	</div>
-
-
-<?php } ?>
+	<?php } ?>
 <?php include_once('layouts/footer.php') ?>
